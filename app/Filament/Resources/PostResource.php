@@ -29,6 +29,16 @@ class PostResource extends Resource
                 Forms\Components\Textarea::make('content')
                     ->required()
                     ->columnSpanFull(),
+                Forms\Components\Select::make('tags')
+                    ->preload()
+                    ->searchable()
+                    ->multiple()
+                    ->relationship('tags', 'name'), // Specify the relationship and the display column
+                // Forms\Components\Repeater::make('tags')
+                //     ->relationship()
+                //     ->schema([
+                //         Forms\Components\TextInput::make('name')->required(),
+                //     ])
             ]);
     }
 
