@@ -71,6 +71,8 @@ class PostResource extends Resource
                     ->searchable(),
                 Tables\Columns\TagsColumn::make('tags.name')
                     ->searchable(),
+                Tables\Columns\TagsColumn::make('categories.name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
