@@ -47,6 +47,19 @@ class PostResource extends Resource
                 //     ->schema([
                 //         Forms\Components\TextInput::make('name')->required(),
                 //     ])
+                Forms\Components\Select::make('categories')
+                    ->preload()
+                    ->searchable()
+                    ->multiple()
+                    ->relationship('categories', 'name')
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                    ])
+                    ->editOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                    ]),
             ]);
     }
 
