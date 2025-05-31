@@ -33,7 +33,15 @@ class PostResource extends Resource
                     ->preload()
                     ->searchable()
                     ->multiple()
-                    ->relationship('tags', 'name'), // Specify the relationship and the display column
+                    ->relationship('tags', 'name')
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                    ])
+                    ->editOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                    ]), // Specify the relationship and the display column
                 // Forms\Components\Repeater::make('tags')
                 //     ->relationship()
                 //     ->schema([
@@ -47,6 +55,8 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TagsColumn::make('tags.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
