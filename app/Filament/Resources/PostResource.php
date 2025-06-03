@@ -60,6 +60,8 @@ class PostResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                     ]),
+                Forms\Components\FileUpload::make('image_path')
+                    ->required(),
             ]);
     }
 
