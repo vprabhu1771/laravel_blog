@@ -10,6 +10,9 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/posts/{id}', [HomeController::class, 'show'])->name('posts.show');
+
+
 use App\Http\Controllers\AuthController;
 
 Route::get('/register',[AuthController::class,'register'])->name('auth.register');
